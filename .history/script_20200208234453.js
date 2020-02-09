@@ -1,0 +1,42 @@
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
+var randdom = document.getElementById("random");
+
+function generateRandom() {
+	body.style.background =
+		"linear-gradient(to right, "
+		+ random_bg_color()
+		+ ", "
+		+ random_bg_color()
+		+ ")";
+	css.textContent = body.style.background + ";";
+}
+
+function random_bg_color() {
+	var x = Math.floor(Math.random() * 256);
+	var y = Math.floor(Math.random() * 256);
+	var z = Math.floor(Math.random() * 256);
+	return "rgb(" + x + "," + y + "," + z + ")";
+}
+
+
+
+function setGradient() {
+	body.style.background =
+		"linear-gradient(to right, "
+		+ color1.value
+		+ ", "
+		+ color2.value
+		+ ")";
+	css.textContent = body.style.background + ";";
+}
+
+setGradient();
+
+color1.addEventListener("input", setGradient);
+
+color2.addEventListener("input", setGradient);
+
+randdom.addEventListener("click", generateRandom);
